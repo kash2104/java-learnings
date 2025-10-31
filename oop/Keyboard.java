@@ -58,6 +58,10 @@ class AdvanceKeyboard extends Keyboard {
     public void hit(){
         System.out.println("hit from keyboard advanced");
     }
+
+    public void show(){
+        super.hit();
+    }
 }
 
 class Main{
@@ -78,5 +82,10 @@ class Main{
         //polymorphism: here created object created is of adv. so advkeyboard func called
         Keyboard gh = new AdvanceKeyboard();
         gh.hit();
+        // gh.show(); //shows error since gh is reference to Keyboard class object and Keyboard class doesn't have show() method
+        
+        //using super method to access the parent's class method
+        AdvanceKeyboard ak = new AdvanceKeyboard();
+        ak.show();
     }
 }
