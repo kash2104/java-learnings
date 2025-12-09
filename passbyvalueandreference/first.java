@@ -24,6 +24,12 @@ class Main{
         System.out.println("value updated in the function "+n);
     }
 
+    static void update(Integer n){
+        System.out.println("inside update function "+n);
+        n+=1;
+        System.out.println("value updated in the update function "+n);
+    }
+
     public static void main(String args[]){
 
         //here the n is same before and after. just the local n inside the value() is updated
@@ -41,5 +47,11 @@ class Main{
         System.out.println(p.name);
         p.reassign(p);
         System.out.println(p.name);
+
+
+        Integer val = 2;
+        System.out.println("before calling update function "+val);
+        update(val);
+        System.out.println("after calling update function "+val);
     }
 }
