@@ -1,0 +1,26 @@
+Isolation levels
+1. Dirty reads
+    - Transaction T1 reads data that another transaction T2 has not committed yet. If T2 rolls back, T1 read invalid data.
+2. Non repeatable read
+    - A transaction reads the same row twice and sees different values because another transaction modified it in between.
+3. Lost update
+    - Two transactions read the same value and both write a new value based on the old value, causing one write to be lost.
+4. Phantom reads
+    - A transaction re-runs the same query, but new rows suddenly appear (or disappear) due to inserts/updates by other transactions.
+
+
+COMMIT & ROLLBACK
+    - ROLLBACK can only undo work that has NOT been committed yet.
+    - Once COMMIT happens, ROLLBACK can no longer touch that data.
+    - How ROLLBACK works internally
+        Databases maintain undo logs (or rollback segments).
+        Before modifying a row:
+        DB writes the old value into undo log
+        If rollback occurs → DB restores the old versions
+        Undo logs also support MVCC (readers see old versions).
+    - How COMMIT works internally
+        When you commit:
+        All changes are written to the Write-Ahead Log (WAL)
+        WAL is flushed to durable storage (disk)
+        The DB marks the transaction as committed
+        Background processes apply changes to actual data pages
