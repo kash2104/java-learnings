@@ -1,0 +1,22 @@
+1. Difference in where and on
+    - where 
+        filters after the join happens and tells which rows remain in the final result. 
+        Useful when want to remove the NULL rows coming when we do left join
+    - on 
+        filters before teh join happens
+
+
+2. Common table expression  
+    - like they are temporary results which are used in another query
+    - mainly start with WITH keyword
+    - IN
+        matches any value
+        ex: select * from employees where id in (select employee_id from sales)
+    - ANY
+        matches at least one value
+    - ALL
+        matches all the values
+
+3. DDL & DML
+    - data definition language used mainly to define the db or to change the db appearance
+    - data modification language is used to manipulate the data present inside the db
