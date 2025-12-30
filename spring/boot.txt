@@ -1,0 +1,62 @@
+Spring is a core java framework which focuses more on configuration.
+
+Springboot is built on top of spring and gives us with default configurations and some setup which allows to focus on development
+
+Maven is build automation and dependency maangement tool. It automatically manages the compilation, dependency handling and all that.
+
+Servelet is a class used to handle client requests and generate responses mainly for web apps.
+    - Servlet lifecycle (important)
+        Load servlet class
+        init() → called once
+        service() → called for every request
+        Internally calls doGet(), doPost(), etc.
+        destroy() → called once before removal
+
+    - It runs inside a servelet container
+
+Servelet container
+    - It's a runtime environment which manages servelets, handles http requests & responses and manages servelet's lifecycle
+
+Dispatcher servelet
+    - the central front controller of Spring MVC.
+    - It receives all incoming HTTP requests and routes them to the correct controller, then sends the response back to the client.
+
+IOC container
+    - In the main java file, we have StartApplication.run() which created ioc container inside the jvm which is managing all the objects and their lifecycle.
+    - This object that is managed and created by ioc container is BEAN.
+    - How does it know which class objects to manage?
+        - this happens using @Component annotation. so whichever class is annotated with it, the ioc container gets to know that I have to manage this class & thus create object of that class in ioc container.
+
+Annotations
+    - @Component: Makes the class into a bean managed by ioc container
+    - @Autowired: Used to connect 2 classes so that we don't have to create and inject the object using the new keywod.
+    - @Primary: When doing inheritance, if 2 classes are autowired with the same parent class, then in case of confusion, the child class with @Primary will be preferred.
+        - Ex: class Laptop extends Computer && class Desktop extends Computer
+                Here on whichever @Primary is given will be preferred
+    - @Qualifier("laptop"): Same use case as @Primary and alternative to @Primary.
+            - Here laptop class will be preferred during confusion and the first letter (laptop) is small even though we have class Laptop
+    
+    - @PathVariable: Used whenever we are extracting something from the url and using that as parameters (/products/{product_id}) public Product getProductById(@PathVariable int product_id)
+
+    - @RequestMapping(): Used to define the api routes.
+        - It has specialised method for different methods like @GetMapping, @PostMapping, etc.
+
+    - @RequestBody: Needs to be used whenever we will be sending data from the client to the server like in post,put,patch requests.
+        public void AddProduct(@RequestBody Product prod)
+
+Controllers
+    - Controllers are just for accepting the client request and sending back the response to the client. It doesn't do any of the business logic(this logic is done by the service layer).
+
+    - @Controller
+        - Whatever class we have annotated with this and the methods annotated with @RequestMapping("path_name"), spring expects it(whatever the method is returning) to be a file since it wants layout+data
+
+    - @RestController
+        - Here we are just returning the data and not the layout like @Controller annotation.
+
+    - We have different controllers so how does spring knows which controller/method to call when we go on a particular route??
+        - We have a front controller which sees and has knowledge of all the mappings so it knows for which request it has to send the request to which controller
+
+
+Jackson package
+    - It is the package that converts the java object into json and vice-a-versa.
+    - It comes with spring web only
