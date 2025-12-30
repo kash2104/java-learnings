@@ -1,0 +1,22 @@
+Inversion of Control
+    - In java, when different layers try to communicate, objects have to be created and then we need to manage the whole lifecycle of it.
+    - in IOC, we give this responsibility of managing the whole object to someone else
+    - IOC is achieved with the help of dependency injection
+    - it is a principle
+
+Dependency injection
+    - it is a design pattern
+    - the spring injects the objects whenever we require it
+
+    - Constructor injection
+        public class Controller{
+            private Service service;
+            public Controller(Service service){
+                this.service = service;
+            }
+        }
+    - Field injection
+        public class Controller{
+            @Autowired
+            private Service service;
+        }
