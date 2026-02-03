@@ -1,0 +1,8 @@
+Logback is the default logger that is being used by the springboot.
+
+slf4j is just a wrapper on top of logback which makes it easier for logging.
+    - Here like we don't have to create a final instance of the logger class.
+    - just add the annotation and it's done.
+    - this annotation is provided by lombock.
+    - Here warn, error, info levels come by default.
+    - Need a workaround to add debug and trace log levels by specifying them in yml or xml files.
