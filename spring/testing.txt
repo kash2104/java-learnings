@@ -1,0 +1,9 @@
+- Mostly we write tests for the service layer.
+- Writing test for dao layer would require whole another database setup so we try to avoid those tests.
+
+- @Test annotation is added above the methods that we write in the testing classes.
+- @Mock annotation is added on the class object using which we will be calling methods similar to the @Autowired
+    annotation.
+- suppose the service object has a dependency of the dao object so we will add @Mock annotation to the dao object that
+    we will be creating and then for the service object we will have @InjectMocks annotation since dao is a dependency
+    which needs to be injected
