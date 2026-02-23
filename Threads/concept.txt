@@ -1,0 +1,13 @@
+wait() ->
+- waits until timeout or notify() || notifyAll() is called
+- releases the lock
+- use case
+    - one thread must wait for another i.e. producer-consumer problem
+    - thread coordination i.e. basically used for communicating within the threads
+
+sleep()
+- pauses the execution for some time
+- doesn't release the lock
+- use case
+    - want to show delay
+    - polling, rate limiting
